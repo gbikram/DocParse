@@ -18,7 +18,11 @@ def getDocURLs(filename):
     for rel in rels:
         if rels[rel].reltype == RT.HYPERLINK:      
             print(rels[rel]._target)
-
-getVbaIOCs("Malicious Samples/__00FYI SHIPPING DOC.doc")
+print()
+print("IOCs from Embedded Macro:")
+getVbaIOCs("mal-samples/__00FYI SHIPPING DOC.doc")
+print()
 print("=================================================")
-getDocURLs("Malicious Samples/addresses.docx")
+print()
+print("IOCs from Document Body")
+getDocURLs("mal-samples/addresses.docx")
