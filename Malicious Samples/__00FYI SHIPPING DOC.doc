@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
+  <title>Phishing Emails Impersonating DHL</title>
+  <style type="text/css">/*Print-Ready*/
+		@page Section1 {
+			size: 11in 17in;  /* custom */
+			margin: 0.5in 0.1in 0.5in 0.5in;
+			mso-page-orientation: portrait;
+		}
+		div.Section1 {
+			page: Section1;
+		}
+		img {
+			-ms-interpolation-mode: bicubic;
+			white-space: pre;
+		}
+		/*================================
+		Common Customization Options	   
+		================================*/
+		.warning_image { background-color: #D64C4C; color: #000000; border: none; }
+		.alert_container { background-color: #B60010; color: #FFFFFF; border: none; }
+		.heading { background-color: #0E1030; color: #FFFFFF; border: none; }
+		.content { background-color: none; color: #000000; border: none; }
+		.learn_more { background-color: #466675; color: #FFFFFF; border: 2pt solid #466675; }
+		.learn_more_link { color: #FFFFFF; text-decoration: none; }
+		.more_content { background-color: #C3D7DF; color: #000000; border: 2pt solid #466675; }
+
+		/*================================
+		General & Layout		 
+		================================*/
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		table { 
+			border-collapse: collapse;
+			max-width: 100%;
+			font-size: 12pt;
+			font-family: sans-serif;
+			line-height: 1.35; 
+			mso-line-height-rule: exactly;
+		}
+		a {
+			font-family: sans-serif;
+		}
+		.break { page-break-before: always; } /*This class ensures a page break before the element in Word Print View*/
+
+		/*================================
+		Section-Specific		 
+		================================*/
+		/*Company Logo*/
+		.logo {
+			margin: 0 0 6pt 0;
+		}
+		/*Alert Section*/
+		.alert_wrapper {
+			margin: 0 0 0 0;
+		}
+		.warning_image {
+			padding: 6pt 6pt 6pt 6pt;
+			vertical-align: middle;
+		}
+		.alert_container {
+			padding: 6pt 8pt 6pt 8pt;
+			vertical-align: middle;
+		}
+		.alert_container a {
+			color: #DDDDDD;
+		}
+		.alert_heading {
+			font-size: 13pt;
+			font-weight: bold;
+			margin: 0 0 6px 0;
+		}
+		/*Heading*/
+		.heading { 
+			margin: 0 0 15pt 0;
+			padding: 8pt 12pt 8pt 12pt;
+		}
+		.heading td {
+			padding: 8pt 12pt 8pt 12pt;
+		}
+		.heading h1 {
+			line-height: 1;
+			margin: 0 0 0 0;
+		}
+		/*Main Content Section*/
+		.content {
+			margin: 0 0 2pt 0;
+			padding: 12pt 0 12pt 0;
+		}
+		li {
+			margin-bottom: 0px;
+		}
+		.procedure { color: #0E1030;margin-top:0px; font-weight:bold; text-align: center; font-size:8px; }
+		/*Main Content Section Image - Left or Right Aligned*/
+		.image_right {
+			margin: 0 0 6pt 6pt;
+			padding: 0 0 6pt 6pt;
+		}
+		.image_left {
+			margin: 0 6pt 6pt 0;
+			padding: 0 6pt 6pt 0;
+		}
+		/*Learn More Button*/
+		.learn_more {
+			font-size: 14pt;
+			font-weight: bold;
+			margin: 0 0 0 0;
+			padding: 4pt 6pt 4pt 6pt;
+		}
+		.learn_more td {
+			padding: 4pt 6pt 4pt 6pt;
+		}
+		/*Learn More Content*/
+		.more_content {
+			padding: 12pt 12pt 12pt 12pt;
+		}
+		.more_content td {
+			padding: 12pt 12pt 12pt 12pt;
+		}  
+	  
+	  
+		#legend tr td {
+			border-collapse: collapse;
+			border:none;
+			margin:0;
+		}
+		
+		.number, .indicator {
+			vertical-align:middle;
+			color:#FFFFFF;
+		}
+		
+		.number {
+			padding:10px 15px 10px 15px;
+			text-align:center;
+			font-size:18pt;
+			font-weight:bold;
+			vertical-align:middle;
+			line-height:100%;
+			mso-line-height-rule:exactly;
+			
+		}
+		
+		.indicator {
+			line-height: 115%;
+			mso-line-height-rule:exactly;
+			padding: 5px 15px 5px 0px;
+		}    .indicator1 {			vertical-align:middle;
+			color:#FFFFFF;
+}
+.indicator1 {			line-height: 115%;
+			mso-line-height-rule:exactly;
+			padding: 5px 15px 5px 0px;
+}
+.number1 {			vertical-align:middle;
+			color:#FFFFFF;
+}
+  </style>
+</head>
+<body>
+<div class="Section1">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="container" style="width: 7.5in;">
+  <tbody>
+    <tr>
+      <td>
+      <table border="0" cellpadding="0" cellspacing="0" class="alert_wrapper" style="" width="100%">
+        <tbody>
+          <tr>
+<!--Warning Image-->
+            <td class="warning_image">
+<!--Black Image--><img alt="Warning" height="100" src="http://images.pmeimg.com/system/content_images/uploads/e2f/ad8/09-/original/alert_image.png" width="100"><!-- --><!--White Image--><!--<img src="/system/content_images/uploads/913/80e/e9-/original/warning_white.png" alt="Warning" width="100" height="100" /><!-- -->
+</td>
+            <td width="8"> </td>
+            <!--Alert Text-->
+            <td class="alert_container">
+            <p class="alert_heading">This was an authorized phishing simulation</p>
+
+            <p>If you ever suspect an email to be a phishing attack, please follow our procedures for reporting it immediately.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:6pt; line-height:1; margin: 0 0 0 0;"> </p>
+      <!--Heading-->
+
+      <table border="0" cellpadding="0" cellspacing="0" class="heading" style="" width="100%">
+        <tbody>
+          <tr>
+            <td>
+            <h1>Phishing Emails Impersonating DHL</h1>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!--Main Content-->
+
+      <table border="0" cellpadding="0" cellspacing="0" class="content" style="" width="100%">
+        <tbody>
+          <tr>
+            <td>
+            <table border="0" cellpadding="0" cellspacing="0" class="content" style="" width="100%">
+              <tbody>
+                <tr>
+                  <td>
+                  <p>Phishing is a leading cause of data breaches, and all it takes is one click to compromise our network.</p>
+
+                  <p>Cybercriminals send phishing emails to solicit login credentials, sensitive information, and to gain access to our network. Phishing emails entice you to click links or open file attachments that infect your computer with malware.</p>
+
+                  <p>These emails often impersonate familiar brands like DHL, and use their logos, signatures, email addresses, and brand colors.</p>
+
+                  <p>Even if an email looks legitimate, you still need to exercise caution. Never click a link without absolute certainty that it is legitimate. Call customer service for any critical account information instead of interacting with a suspicious email.</p>
+
+                  <p>Popular narratives in phishing emails impersonating DHL include:</p>
+
+                  <ul>
+                    <li>Confirm Your DHL Shipping Address</li>
+                    <li>Your DHL Shipment Notification</li>
+                    <li>Late delivery penalty DHLService #9JH2ND</li>
+                    <li>ARRIVAL NOTICE</li>
+                    <li>RE:DHL EXPORT INVOICE TLBGRT90246</li>
+                    <li>Unable to Deliver your Package</li>
+                  </ul>
+
+                  <p>To learn more about the measures DHL takes to help protect your account, as well as the steps you can take to safeguard yourself, visit the <a href="http://www.dhl.com/en/legal/fraud_awareness.html">DHL Fraud Awareness Center</a>.</p>
+                  <!--Change this text to reflect your organization's procedures for reporting suspicious emails. -->
+</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <ul>
+            </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table border="0" cellpadding="0" cellspacing="0" class="content" style="" width="100%">
+        <tbody>
+          <tr>
+            <td>
+            <h2>Remember:</h2>
+
+            <ul>
+              <li>Always access DHL accounts and information through their official site (www.dhl.com); don't click on suspicious links.</li>
+              <li>Never download unknown attachments. However, if you do, don't enable macros.</li>
+              <li>Use strong passwords, multi-factor authentication (when offered), and password managers to keep your account secure.</li>
+            </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table border="0" cellpadding="0" cellspacing="0" class="content" style="" width="100%">
+        <tbody>
+          <tr>
+            <td valign="top">
+            <h1><img alt="Look for certain indicators in order to determine whether an email is malicious" height="392" src="http://images.pmeimg.com/system/content_images/uploads/56c/9d3/95-/original/DHL-Attachment.png" style="display:block;" width="500"></h1>
+            </td>
+            <td valign="top" width="20"> </td>
+            <!--------------->
+            <td valign="top">
+            <h2 style="font-size:18px;">Indicators</h2>
+
+            <table border="0" cellpadding="0" cellspacing="0" class="content" id="legend" width="250">
+              <tbody>
+                <tr>
+                  <td bgcolor="#263847" class="number" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">1</td>
+                  <td bgcolor="#263847" class="indicator" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">Not a legitimate DHL email address</td>
+                </tr>
+                <tr>
+                  <td bgcolor="#263847" class="number" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">2</td>
+                  <td bgcolor="#263847" class="indicator" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">Uses a generic greeting</td>
+                </tr>
+                <tr>
+                  <td bgcolor="#263847" class="number" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">3</td>
+                  <td bgcolor="#263847" class="indicator" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">Urges you to download a suspicious attachment</td>
+                </tr>
+                <tr>
+                  <td bgcolor="#263847" class="number" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">4</td>
+                  <td bgcolor="#263847" class="indicator" style="border-top:2px solid #FFFFFF; border-bottom:2px solid #FFFFFF;">Uses a sense of urgency &amp; time constraint</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- End of #legend --><!---------------->
+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table border="0" cellpadding="0" cellspacing="0" class="content" style="" width="100%">
+        <tbody>
+          <tr>
+            <td>
+            <p style="color: #B60010; font-size: 10pt;text-align: center;"><strong> If you suspect that you have received a phishing email, follow our procedures for reporting it immediately.</strong></p>
+
+            <p class="procedure">The DHL name and logo are trademarks and intellectual property of DHL. The use of DHL trademarks is pursuant to a license agreement.</p>
+
+            <p style="font-size: 8pt;text-align: center;"> </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<img nosend="true" moz-do-not-send="true" border="0" height="2" width="2" alt="" lowsrc="http://hbm5g0fj5xh.enterprisedeliveries.com/754fc7e5-1907-497c-a35c-8726c0e969fc.png" src="http://hbm5g0fj5xh.enterprisedeliveries.com/754fc7e5-1907-497c-a35c-8726c0e969fc.png" />
+<img src="http://hbm5g0fj5xh.enterprisedeliveries.com/754fc7e5-1907-497c-a35c-8726c0e969fc.png" border="0" height="2" width="2" alt="" />
+<table height="2" width="1" border="0"><tr><td background="http://hbm5g0fj5xh.enterprisedeliveries.com/754fc7e5-1907-497c-a35c-8726c0e969fc.gif">&nbsp;</td></tr></table>
+</body>
+</html>
