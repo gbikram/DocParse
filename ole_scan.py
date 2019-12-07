@@ -22,6 +22,8 @@ def getDocURLs(filename):
             print(rels[rel]._target)
 
 filename = sys.argv[1]
+
+# Check if DOCX file since this supports only DOCX for now. Probably need a switch case for various formats
 if(filename.endswith(".docx")):
     print()
     print("IOCs from Embedded Macro:")
