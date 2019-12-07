@@ -1,0 +1,5 @@
+Add functionality for other documents - PDF, DOC, EML
+Add Flask
+Use JSON instead of print
+Add simple front-end
+Save IOCs with file name hash within a NoSQL database
