@@ -21,17 +21,18 @@ def getDocURLs(filename):
         if rels[rel].reltype == RT.HYPERLINK:      
             print(rels[rel]._target)
 
-filename = sys.argv[1]
+def startScan():
+    filename = sys.argv[1]
 
-# Check if DOCX file since this supports only DOCX for now. Probably need a switch case for various formats
-if(filename.endswith(".docx")):
-    print()
-    print("IOCs from Embedded Macro:")
-    getVbaIOCs(filename)
-    print()
-    print("=================================================")
-    print()
-    print("IOCs from Document Body")
-    getDocURLs(filename)
-else:
-    print("Given file is not a DOCX!")
+    # Check if DOCX file since this supports only DOCX for now. Probably need a switch case for various formats
+    if(filename.endswith(".docx")):
+        print()
+        print("IOCs from Embedded Macro:")
+        getVbaIOCs(filename)
+        print()
+        print("=================================================")
+        print()
+        print("IOCs from Document Body")
+        getDocURLs(filename)
+    else:
+        print("Given file is not a DOCX!")
