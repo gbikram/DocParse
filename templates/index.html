@@ -40,7 +40,7 @@
     <!--VueJS Script-->
     <script>
         var app = new Vue({
-            delimiters:['${', '}'],
+            delimiters: ['${', '}'],
             el: '#app',
 
             data: {
@@ -52,10 +52,30 @@
                 handleFileUpload() {
                     this.file = this.$refs.file.files[0];
                     this.filename = this.file.name;
-                }
+                },
 
                 // To-do - Submit file to server
+                submitFile() {
 
+                    let formData = new FormData();
+
+
+                    formData.append('file', this.file);
+
+                    axios.post('/AnalyzeFile',
+                        formData,
+                        {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }
+                    ).then(function () {
+                        console.log('SUCCESS!!');
+                    })
+                        .catch(function () {
+                            console.log('FAILURE!!');
+                        });
+                },
             }
         })
     </script>
@@ -66,4 +86,5 @@
         margin-left: 5px;
     }
 </style>
+
 </html>
