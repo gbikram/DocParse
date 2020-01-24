@@ -2,6 +2,7 @@
 from flask import Flask
 import ole_scan
 from flask import render_template
+import requests
 
 app = Flask(__name__)
 
@@ -10,8 +11,12 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-# @app.route('AnalyzeFile')
-#     def analyzeFile():
-        
+ @app.route('/AnalyzeFile', methods = ["POST"])
+def analyzeFile():
+    if request.method == "POST":
+        # Get file from client
+        request.
+        # Pass file for processing
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

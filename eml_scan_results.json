@@ -1,0 +1,75 @@
+{
+    "body": [
+        {
+            "uri_hash": [
+                "46fee291569e3eef8e7ced0218ee48fd6b05cd125a25aa118ac8beaf361e927a",
+                "0fff4790c0d7392a38191e0e163585a91c7b7f59ecb8d696509ff9a9a0de0cf4",
+                "73f0cc0d806b0ee947b6c3001a9984b34945db6f59cb3569d975b6852c7f4c35",
+                "2108db1a141c956f945ad83ec87cc8d82990a2465bc00c904536c441eb0eb8ab"
+            ],
+            "email_hash": [
+                "285cd1e6c95a0aa685d227de12de41a75f40660983e4102c7ba4fecb941ff4a4"
+            ],
+            "domain_hash": [
+                "80fc0fb9266db7b83f85850fa0e6548b6d70ee68c8b5b412f1deea6ebdef0404",
+                "3fe3d259e03983d9bdd0bc98c898ce32d729512795b4466d6b9fce0881e3c001"
+            ],
+            "content_header": {
+                "content-language": [
+                    "en-US"
+                ]
+            },
+            "hash": "a7369c6a71fae873f296770cb314d876606107b4dd139af0f134b74578cdb84b"
+        }
+    ],
+    "header": {
+        "subject": "Sample EML",
+        "from": "john.doe@example.com",
+        "to": [
+            "test@example.com"
+        ],
+        "date": "2013-04-26T11:15:47+00:00",
+        "received": [
+            {
+                "src": "from localhost by mta.example.com (postfix) with esmtps id 6388f684168 for <test@example.com>; fri, 26 apr 2013 13:15:55 +0200",
+                "by": [
+                    "mta.example.com"
+                ],
+                "with": "esmtps id 6388f684168",
+                "for": [
+                    "test@example.com"
+                ],
+                "date": "2013-04-26T13:15:55+02:00"
+            }
+        ],
+        "received_domain": [
+            "mta.example.com"
+        ],
+        "received_foremail": [
+            "test@example.com"
+        ],
+        "header": {
+            "content-language": [
+                "en-US"
+            ],
+            "from": [
+                "John Doe <john.doe@example.com>"
+            ],
+            "subject": [
+                "Sample EML"
+            ],
+            "message-id": [
+                "<F96257F63EAEB94C890EA6CE1437145C013B01FA@example.com>"
+            ],
+            "date": [
+                "Fri, 26 Apr 2013 11:15:47 +0000"
+            ],
+            "received": [
+                "from localhost\tby mta.example.com (Postfix) with ESMTPS id 6388F684168\tfor <test@example.com>; Fri, 26 Apr 2013 13:15:55 +0200"
+            ],
+            "to": [
+                "test@example.com"
+            ]
+        }
+    }
+}
