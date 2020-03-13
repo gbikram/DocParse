@@ -11,11 +11,11 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
- @app.route('/AnalyzeFile', methods = ["POST"])
-def analyzeFile():
-    if request.method == "POST":
+#@app.route('/AnalyzeFile', methods = ["POST"])
+#def analyzeFile():
+#    if request.method == "POST":
         # Get file from client
-        request.
+#        request.
         # Pass file for processing
 
 if __name__ == '__main__':
