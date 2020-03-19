@@ -2,7 +2,6 @@
 from flask import Flask, request
 import ole_scan
 from flask import render_template
-import requests
 import os
 
 UPLOAD_FOLDER = "./uploadedfiles"
@@ -15,16 +14,19 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     return render_template("index.html")
 
+# Called on upload
 @app.route('/AnalyzeFile', methods = ["POST"])
 def analyzeFile():
    if request.method == "POST":
         print("POST DETECT")
         # Get file from client
         file = request.files['file']
+
+        # Save file locally
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename) 
         file.save(filepath)    
-        print("FILE RETRIEVED")
-        # Pass file for processing
+
+        # Pass file for oletools processing
         ole_scan.startScan(filepath)
         return "File Uploaded"
 
