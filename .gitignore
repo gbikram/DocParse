@@ -1,3 +1,7 @@
 .vscode
+eml_scan_results.json
 mal-samples/
 __pycache__
+uploadedfiles/
+app.py.save
+env/

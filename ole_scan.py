@@ -43,8 +43,6 @@ def getEmailIOCs(filename):
     print(eml_parser.eml_parser.get_uri_ondata(mail.body))
 
 def startScan(filename):
-    
-
     # Check if DOCX file since this supports only DOCX for now. Probably need a switch case for various formats
     if(filename.endswith(".docx")):
         print()

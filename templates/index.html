@@ -13,6 +13,9 @@
 
     <!-- Vue JS Dev-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +36,7 @@
                     <span class="file-name">${ filename }</span>
                 </label>
             </div>
-            <button class="button">Upload</button>
+            <button class="button" v-on:click="submitFile()">Upload</button>
         </div>
     </div>
 
