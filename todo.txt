@@ -1,3 +1,6 @@
+Activating venv
+source env/bin/activate
+
 Add functionality for other documents - PDF, DOC, EML
 Add Flask
 Use JSON instead of print
