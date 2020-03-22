@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Doc Scan</title>
+    <title>DocParse</title>
 
     <!--Bulma CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
@@ -20,23 +20,63 @@
 
 <body>
     <div id="app">
-        <h1 class="title is-1">Doc Scanner</h1>
-        <div class="field is-horizontal">
-            <div class="file has-name">
-                <label class="file-label">
-                    <input class="file-input" type="file" ref="file" v-on:change="handleFileUpload()">
-                    <span class="file-cta">
-                        <span class="file-icon">
-                            <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                            Choose a file…
-                        </span>
-                    </span>
-                    <span class="file-name">${ filename }</span>
-                </label>
-            </div>
-            <button class="button" v-on:click="submitFile()">Upload</button>
+        <div class="container">
+
+            <!--Upload Section-->
+            <section class="section">
+                <h1 class="title is-1">DocParse</h1>
+                <h2 class="subtitle">Scan files for IOCs &amp; malicious indicators - currently supports DOC, DOCX, EML
+                </h2>
+                <div class="field is-horizontal">
+                    <div class="file has-name is-info">
+                        <label class="file-label">
+                            <input class="file-input" type="file" ref="file" v-on:change="handleFileUpload()">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                    Browse File...
+                                </span>
+                            </span>
+                            <span class="file-name" v-if="selectorFileName">${ selectorFileName }</span>
+                            <span class="file-name" v-else>No file selected</span>
+                        </label>
+                    </div>
+                    <button class="button" v-on:click="submitFile()">Upload</button>
+                </div>
+            </section>
+
+            <!--Output Section-->
+            <section class="section" v-if="primaryFileData">
+                <div class="content">
+                    <h4 class="subtitle is-4">File Details</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><label class="label">Name</label></td>
+                                <td>${ primaryFileData.file_name }</td>
+                            </tr>
+                            <tr>
+                                <td><label class="label">File Type</label></td>
+                                <td>${ primaryFileData.file_type }</td>
+                            </tr>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+
+                    <!---Email Data-->
+                    <div class="field">
+                        <label class="label">URLs from Email Body</label>
+                        <ul>
+                            <li v-for="url in primaryFileData.body_urls">
+                                ${ url }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 
@@ -48,13 +88,15 @@
 
             data: {
                 file: '',
-                filename: "No file selected",
+                selectorFileName: null,
+                primaryFileData: null,
+                url: ''
             },
 
             methods: {
                 handleFileUpload() {
                     this.file = this.$refs.file.files[0];
-                    this.filename = this.file.name;
+                    this.selectorFileName = this.file.name;
                 },
 
                 // To-do - Submit file to server
@@ -74,6 +116,15 @@
                         }
                     ).then(response => {
                         console.log(response.data);
+                        fileData = response.data[this.selectorFileName]
+                        this.primaryFileData = {
+                            "file_name": this.selectorFileName,
+                            "file_type": fileData.file_type
+                        }
+                        if (this.primaryFileData.file_type === "eml") {
+                            this.primaryFileData["attachments"] = fileData.email_data.attachments
+                            this.primaryFileData["body_urls"] = fileData.email_data.body_urls
+                        }
                     })
                         .catch(error => {
                             console.log(error);
@@ -87,6 +138,33 @@
 <style>
     .button {
         margin-left: 5px;
+    }
+
+    .container {
+        margin-top: 5px;
+    }
+
+    .section {
+        padding: 1rem 1.5rem;
+    }
+
+    .subtitle.is-4 {
+        border-bottom: solid #e6e6e6 1.5px;
+    }
+
+    .label {
+        margin-right: 5px;
+    }
+
+    .content table {
+        width: 50%;
+        margin-bottom: 5px;
+    }
+
+    .content ul {
+        list-style: none;
+        margin-left: 0em;
+        margin-top: 0em;
     }
 </style>
 
