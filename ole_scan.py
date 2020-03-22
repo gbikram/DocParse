@@ -51,6 +51,7 @@ def getEmailIOCs(pathToFile):
     with open(pathToFile, 'rb') as emailFile:
         rawEmail = emailFile.read()
     parsedEmail = eml_parser.eml_parser.decode_email_b(rawEmail, include_attachment_data=True)
+    del parsedEmail['body']
     # print(json.dumps(parsedEmail, default=jsonSerial))
 
     if 'attachment' in parsedEmail:
@@ -81,7 +82,7 @@ def getEmailIOCs(pathToFile):
     # Get URLs from raw email
     bodyUrls = eml_parser.eml_parser.get_uri_ondata(mail.body)
     json_out['body_urls'] = bodyUrls
-
+    
     return json_out
 
 def startScan(pathToFile):
@@ -97,11 +98,16 @@ def startScan(pathToFile):
         # If DOCX - get all URLs from body. 
         # Need to add support for DOC
         if(filename.endswith(".docx")):
+            results_json[filename]['file_type'] = "docx"
             results_json[filename]['body_iocs'] = getDocxURLs(pathToFile)
+        elif(filename.endswith("doc")):
+            results_json[filename]['file_type'] = "doc"
+
         results_json[filename]['macro_iocs'] = getVbaIOCs(pathToFile)  
 
     # Email File
     elif(filename.endswith(".eml")):
+        results_json[filename]['file_type'] = "eml"
         results_json[filename]['email_data'] = getEmailIOCs(pathToFile)
     
     else:
