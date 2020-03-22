@@ -18,7 +18,6 @@ def index():
 @app.route('/AnalyzeFile', methods = ["POST"])
 def analyzeFile():
    if request.method == "POST":
-        print("POST DETECT")
         # Get file from client
         file = request.files['file']
 
@@ -27,8 +26,7 @@ def analyzeFile():
         file.save(filepath)    
 
         # Pass file for oletools processing
-        ole_scan.startScan(filepath)
-        return "File Uploaded"
+        return ole_scan.startScan(filepath)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
