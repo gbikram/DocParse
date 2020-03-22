@@ -72,11 +72,11 @@
                                 'Content-Type': 'multipart/form-data'
                             }
                         }
-                    ).then(function () {
-                        console.log('SUCCESS!!');
+                    ).then(response => {
+                        console.log(response.data);
                     })
-                        .catch(function () {
-                            console.log('FAILURE!!');
+                        .catch(error => {
+                            console.log(error);
                         });
                 },
             }
