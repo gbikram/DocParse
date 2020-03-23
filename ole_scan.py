@@ -65,12 +65,12 @@ def getEmailIOCs(pathToFile):
             # Docx  or DOC file
             if(attachment['filename'].endswith(".docx") or attachment['filename'].endswith(".doc") ):
                 if(attachment['filename'].endswith(".docx")):
-                    attachmentData['filename']['body_urls'] = getDocxURLs(pathToFile)
-                attachmentData['filename']['macros'] = getVbaIOCs(pathToFile)
+                    attachmentData['body_urls'] = getDocxURLs(pathToFile)
+                attachmentData['macros'] = getVbaIOCs(pathToFile)
             
             # Email File
             elif(attachment['filename'].endswith(".eml")):
-                attachmentData['filename']['email_iocs'] = getEmailIOCs(pathToFile)        
+                attachmentData['file_name']['email_iocs'] = getEmailIOCs(pathToFile)        
             
             attachments.append(attachmentData)
         

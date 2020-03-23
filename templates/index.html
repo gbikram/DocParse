@@ -51,7 +51,7 @@
             <section class="section" v-if="primaryFileData">
                 <div class="content">
                     <h4 class="subtitle is-4">File Details</h4>
-                    <table class="table">
+                    <table class="table" id="genericTable">
                         <tbody>
                             <tr>
                                 <td><label class="label">Name</label></td>
@@ -66,15 +66,44 @@
                     </table>
 
                     <!---Email Data-->
-                    <div class="field">
-                        <label class="label">URLs from Email Body</label>
-                        <ul>
-                            <li v-for="url in primaryFileData.body_urls">
-                                ${ url }
-                            </li>
-                        </ul>
+                    <div class=content v-if="primaryFileData.file_type === 'eml'">
+                        <div class="field">
+                            <label class="label">URLs from Email Body</label>
+                            <ul>
+                                <li v-for="url in primaryFileData.body_urls">
+                                    ${ url }
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="field" v-if="primaryFileData.attachments">
+                            <label class="label">Attachments</label>
+                            <article class="message" v-for="attachment in primaryFileData.attachments">
+                                <div class="message-header">
+                                    <p>${ attachment.file_name }</p>
+                                    <button class="delete" aria-label="delete"></button>
+                                </div>
+                                <div class="message-body">
+                                    <div class="field is-horizontal" v-for="(value, hash) in attachment.hash">
+                                        <label class="label">${ hash } : </label>
+                                        <p>${ value }</p>
+                                    </div>
+                                    <div class="content" v-if="(attachment.file_name.endsWith('docx') || attachment.file_name.endsWith('doc')) && attachment.macros">
+                                        <button class="button is-info is-outline" v-on:click="styleActive.display = 'block'">Embedded VBA</button>
+                                        <macro :macroiocs="attachment.macros" :style="styleActive"></macro>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
                     </div>
-                </div>
+
+                    <!--Docx Body URLs-->
+
+                    <!--Docx/Doc Macro-->
+                    <div class="content" v-if="(primaryFileData.file_type === 'docx' || primaryFileData.file_type === 'doc') && primaryFileData.macro_iocs">
+                        <button class="button is-info is-outline" v-on:click="styleActive.display = 'block'">Embedded VBA</button>
+                        <macro :macroiocs="primaryFileData.macro_iocs" :style="styleActive"></macro>
+                    </div>
+                 </div>
             </section>
 
         </div>
@@ -82,15 +111,37 @@
 
     <!--VueJS Script-->
     <script>
+
+        Vue.component('macro', {
+            template: '<div class="content"><div class="modal is-active"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">IOCs from Embedded VBA</p><button class="delete" aria-label="close"></button></header><section class="modal-card-body"><table class="table" id="macro"><thead><tr><th>Type</th><th>Keyword</th><th>Description</th></tr></thead><tbody><tr v-for="macroioc in macroiocs"><td>${ macroioc.type }</td><td>${ macroioc.keyword }</td><td>${ macroioc.description }</td></tr></tbody></table></section><footer class="modal-card-foot"><button class="button is-success" v-on:click="viewmacro = false">Done</button></footer></div></div></div>',
+
+            delimiters: ['${', '}'],
+            props: [
+                'macroiocs',
+                'viewmacro'
+            ],
+
+            data() {
+                return {
+                    macroioc: {},
+                }
+            }
+        });
+
+
         var app = new Vue({
             delimiters: ['${', '}'],
             el: '#app',
-
             data: {
                 file: '',
+                hash: '',
                 selectorFileName: null,
                 primaryFileData: null,
-                url: ''
+                url: '',
+                viewMacro: false,
+                styleActive: {
+                    display: 'none'
+                }
             },
 
             methods: {
@@ -121,9 +172,15 @@
                             "file_name": this.selectorFileName,
                             "file_type": fileData.file_type
                         }
-                        if (this.primaryFileData.file_type === "eml") {
+                        fileType = this.primaryFileData.file_type
+                        if (fileType === "eml") {
                             this.primaryFileData["attachments"] = fileData.email_data.attachments
                             this.primaryFileData["body_urls"] = fileData.email_data.body_urls
+                        } else if (fileType === "docx") {
+                            this.primaryFileData["body_iocs"] = fileData.body_iocs
+                            this.primaryFileData["macro_iocs"] = fileData.macro_iocs
+                        } else if (fileType === "doc") {
+                            this.primaryFileData["macro_iocs"] = fileData.macro_iocs
                         }
                     })
                         .catch(error => {
@@ -156,9 +213,13 @@
         margin-right: 5px;
     }
 
-    .content table {
+    #genericTable {
         width: 50%;
         margin-bottom: 5px;
+    }
+
+    .modal-card {
+        width: 60%;
     }
 
     .content ul {
