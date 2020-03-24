@@ -21,3 +21,4 @@ Add VBA modal for email attachments - Need Test with emotet email file
 Additional Features that can be considered:
 1. IOC integration with VirusTotal / Other OSINT
 2. Template matching to detect credential harvesters - Scan HTML and match with domain to detect cred harvester (More keyword matches = login form != to website domain = high cred harv confidence)
+3. Oletools malware deobfuscation - for emotet 
