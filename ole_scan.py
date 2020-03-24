@@ -7,6 +7,8 @@ import json
 import eml_parser
 import mailparser
 
+UPLOAD_FOLDER = "./uploadedfiles"
+
 # Uses olevba to analyze macros and get all IOCs from a Macro - DOC+DOCX
 def getVbaIOCs(pathToFile):
     vbaparser = VBA_Parser(pathToFile)
@@ -48,6 +50,8 @@ def jsonSerial(obj):
 def getEmailIOCs(pathToFile):
     json_out = {}
 
+    mailParser = mailparser.parse_from_file(pathToFile)
+
     with open(pathToFile, 'rb') as emailFile:
         rawEmail = emailFile.read()
     parsedEmail = eml_parser.eml_parser.decode_email_b(rawEmail, include_attachment_data=True)
@@ -56,6 +60,8 @@ def getEmailIOCs(pathToFile):
 
     if 'attachment' in parsedEmail:
         attachments = []
+        mailParser.write_attachments(UPLOAD_FOLDER)
+
         # For each attachment in output, check attachment extension & scan
         for attachment in parsedEmail['attachment']:
             attachmentData = {}
@@ -65,8 +71,8 @@ def getEmailIOCs(pathToFile):
             # Docx  or DOC file
             if(attachment['filename'].endswith(".docx") or attachment['filename'].endswith(".doc") ):
                 if(attachment['filename'].endswith(".docx")):
-                    attachmentData['body_urls'] = getDocxURLs(pathToFile)
-                attachmentData['macros'] = getVbaIOCs(pathToFile)
+                    attachmentData['body_urls'] = getDocxURLs(UPLOAD_FOLDER + '/' + attachment['filename'])
+                attachmentData['macros'] = getVbaIOCs(UPLOAD_FOLDER + '/' + attachment['filename'])
             
             # Email File
             elif(attachment['filename'].endswith(".eml")):

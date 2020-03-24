@@ -10,7 +10,7 @@ Add functionality for other documents - PDF, DOC, EML
     DOC - Get Body URLs
     XLS, PPT - check if Oletools supports this
 
-
+Save attachments
 Save IOCs with file name hash within a NoSQL database
 Convert front-end to NPM to use Vue components
 Display email header
