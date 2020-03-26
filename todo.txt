@@ -10,13 +10,11 @@ Add functionality for other documents - PDF, DOC, EML
     DOC - Get Body URLs
     XLS, PPT - check if Oletools supports this
 
-Save attachments
+Fix hide attachment details
 Save IOCs with file name hash within a NoSQL database
 Convert front-end to NPM to use Vue components
 Display email header
 Fix URLs list - make scrollable
-Fix Vue modal for VBA - probably need to add emit
-Add VBA modal for email attachments - Need Test with emotet email file
 
 Additional Features that can be considered:
 1. IOC integration with VirusTotal / Other OSINT

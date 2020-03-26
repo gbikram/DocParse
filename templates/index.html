@@ -89,7 +89,7 @@
                                     </div>
                                     <div class="content" v-if="(attachment.file_name.endsWith('docx') || attachment.file_name.endsWith('doc')) && attachment.macros">
                                         <button class="button is-info is-outline" v-on:click="styleActive.display = 'block'">Embedded VBA</button>
-                                        <macro :macroiocs="attachment.macros" :style="styleActive"></macro>
+                                        <macro :macroiocs="attachment.macros" :style="styleActive" @show-vba="styleActive.display = 'none'"></macro>
                                     </div>
                                 </div>
                             </article>
@@ -101,7 +101,7 @@
                     <!--Docx/Doc Macro-->
                     <div class="content" v-if="(primaryFileData.file_type === 'docx' || primaryFileData.file_type === 'doc') && primaryFileData.macro_iocs">
                         <button class="button is-info is-outline" v-on:click="styleActive.display = 'block'">Embedded VBA</button>
-                        <macro :macroiocs="primaryFileData.macro_iocs" :style="styleActive"></macro>
+                        <macro :macroiocs="primaryFileData.macro_iocs" :style="styleActive" @show-vba="styleActive.display = 'none'"></macro>
                     </div>
                  </div>
             </section>
@@ -113,7 +113,7 @@
     <script>
 
         Vue.component('macro', {
-            template: '<div class="content"><div class="modal is-active"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">IOCs from Embedded VBA</p><button class="delete" aria-label="close"></button></header><section class="modal-card-body"><table class="table" id="macro"><thead><tr><th>Type</th><th>Keyword</th><th>Description</th></tr></thead><tbody><tr v-for="macroioc in macroiocs"><td>${ macroioc.type }</td><td>${ macroioc.keyword }</td><td>${ macroioc.description }</td></tr></tbody></table></section><footer class="modal-card-foot"><button class="button is-success" v-on:click="viewmacro = false">Done</button></footer></div></div></div>',
+            template: '<div class="content"><div class="modal is-active"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">IOCs from Embedded VBA</p><button class="delete" aria-label="close"></button></header><section class="modal-card-body"><table class="table" id="macro"><thead><tr><th>Type</th><th>Keyword</th><th>Description</th></tr></thead><tbody><tr v-for="macroioc in macroiocs"><td>${ macroioc.type }</td><td>${ macroioc.keyword }</td><td>${ macroioc.description }</td></tr></tbody></table></section><footer class="modal-card-foot"><button class="button is-success" v-on:click="closeVbaPanel()">Done</button></footer></div></div></div>',
 
             delimiters: ['${', '}'],
             props: [
@@ -124,6 +124,13 @@
             data() {
                 return {
                     macroioc: {},
+                    vbaPane: true
+                }
+            }, 
+
+            methods: {
+                closeVbaPanel() {
+                    this.$emit('show-vba', false)
                 }
             }
         });
