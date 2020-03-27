@@ -79,6 +79,7 @@ def getEmailIOCs(pathToFile):
             attachments.append(attachmentData)
         
         json_out['attachments'] = attachments
+        json_out['headers'] = parsedEmail['header']['header']
     
     # Parse Raw Email
     mail = mailparser.parse_from_file(pathToFile)
