@@ -8,6 +8,9 @@
     <!--Bulma CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/21e8e0db93.js" crossorigin="anonymous"></script>
+
     <!-- Vue JS Production-->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 
@@ -103,12 +106,16 @@
 
                         <div class="content" v-if="primaryFileData.attachments">
                             <label class="label">Attachments</label>
-                            <article class="message" v-for="attachment in primaryFileData.attachments">
-                                <div class="message-header">
+                            <article class="message" v-for="attachment in primaryFileData.attachments" >
+                                <div class="message-header" v-on:click="attachment.contracted = !attachment.contracted">
                                     <p>${ attachment.file_name }</p>
-                                    <button class="delete" aria-label="delete"></button>
+                                    <button class="button" id="dropdown">
+                                        <span class="icon">
+                                            <i class="far fa-caret-square-down"></i>
+                                        </span>
+                                    </button>
                                 </div>
-                                <div class="message-body">
+                                <div class="message-body" id="attachment" :class="{'contracted': attachment.contracted}">
                                     <div class="field is-horizontal" v-for="(value, hash) in attachment.hash">
                                         <label class="label">${ hash.toUpperCase() } : </label>
                                         <p>${ value }</p>
@@ -131,8 +138,14 @@
                     </div>
                  </div>
             </section>
-
         </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>Footer</p>
+                </div>
+            </div>
+        </footer>        
     </div>
 
     <!--VueJS Script-->
@@ -175,7 +188,7 @@
                 styleActive: {
                     display: 'none'
                 },
-                emlHeadToggle: false
+                emlHeadToggle: false,
             },
 
             methods: {
@@ -200,25 +213,32 @@
                             }
                         }
                     ).then(response => {
-                        console.log(response.data);
                         fileData = response.data[this.selectorFileName]
-                        this.primaryFileData = {
+                        primaryFileData = {}
+                        primaryFileData = {
                             "file_name": this.selectorFileName,
                             "file_type": fileData.file_type
                         }
-                        fileType = this.primaryFileData.file_type
+                        fileType = primaryFileData.file_type
                         if (fileType === "eml") {
-                            this.primaryFileData["attachments"] = fileData.email_data.attachments
-                            this.primaryFileData["body_urls"] = fileData.email_data.body_urls
-                            this.primaryFileData["headers"] = fileData.email_data.headers
+                            primaryFileData["attachments"] = fileData.email_data.attachments
+
+                            // Add dropdown state
+                            for(var i = 0; i < primaryFileData.attachments.length; i ++) {
+                                primaryFileData.attachments[i].contracted = false
+                            }
+
+                            primaryFileData["body_urls"] = fileData.email_data.body_urls
+                            primaryFileData["headers"] = fileData.email_data.headers
 
                         } else if (fileType === "docx") {
-                            this.primaryFileData["body_iocs"] = fileData.body_iocs
-                            this.primaryFileData["macro_iocs"] = fileData.macro_iocs
+                            primaryFileData["body_iocs"] = fileData.body_iocs
+                            primaryFileData["macro_iocs"] = fileData.macro_iocs
 
                         } else if (fileType === "doc") {
-                            this.primaryFileData["macro_iocs"] = fileData.macro_iocs
+                            primaryFileData["macro_iocs"] = fileData.macro_iocs
                         }
+                        this.primaryFileData = primaryFileData
                     })
                         .catch(error => {
                             console.log(error);
@@ -273,6 +293,25 @@
         overflow: auto;
         width: 50%;
         height: 200px;
+    }
+
+    .contracted {
+        display: none !important; 
+    }
+
+    #dropdown {
+        background: transparent;
+        color: white;
+        border: none;
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #8080804f;
     }
 </style>
 
