@@ -75,6 +75,31 @@
                                 </li>
                             </ul>
                         </div>
+                        <div v-if="primaryFileData.headers">
+                            <button class="button is-info is-outline" v-on:click="emlHeadToggle = true">Headers</button>
+                            <div class="modal" :class="{ 'is-active': emlHeadToggle }">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Email Header</p>
+                                    <button class="delete" aria-label="close"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr v-for="(headerValue, headerKey) in primaryFileData.headers">
+                                                <td>${ headerKey } : </td>
+                                                <td>${ headerValue[0] }</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button is-success" v-on:click="emlHeadToggle = false">Done</button>
+                                </footer>
+                                </div>
+                            </div>
+                        </div>
                         <div class="field" v-if="primaryFileData.attachments">
                             <label class="label">Attachments</label>
                             <article class="message" v-for="attachment in primaryFileData.attachments">
@@ -148,7 +173,8 @@
                 viewMacro: false,
                 styleActive: {
                     display: 'none'
-                }
+                },
+                emlHeadToggle: false
             },
 
             methods: {
@@ -183,9 +209,12 @@
                         if (fileType === "eml") {
                             this.primaryFileData["attachments"] = fileData.email_data.attachments
                             this.primaryFileData["body_urls"] = fileData.email_data.body_urls
+                            this.primaryFileData["headers"] = fileData.email_data.headers
+
                         } else if (fileType === "docx") {
                             this.primaryFileData["body_iocs"] = fileData.body_iocs
                             this.primaryFileData["macro_iocs"] = fileData.macro_iocs
+
                         } else if (fileType === "doc") {
                             this.primaryFileData["macro_iocs"] = fileData.macro_iocs
                         }
