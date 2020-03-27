@@ -64,7 +64,11 @@ def getEmailIOCs(pathToFile):
         for attachment in parsedEmail['attachment']:
             attachmentData = {}
             attachmentData['file_name'] = attachment['filename']
-            attachmentData['hash'] = attachment['hash']
+            attachmentData['hash'] = {
+                'md5': attachment['hash']['md5'],
+                'sha256': attachment['hash']['sha256']
+            }
+            
             
             # Docx  or DOC file
             if(attachment['filename'].endswith(".docx") or attachment['filename'].endswith(".doc") ):
