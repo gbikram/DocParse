@@ -59,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td><label class="label">File Type</label></td>
-                                <td>${ primaryFileData.file_type }</td>
+                                <td>${ primaryFileData.file_type.toUpperCase() }</td>
                             </tr>
                             <tr></tr>
                         </tbody>
@@ -67,15 +67,15 @@
 
                     <!---Email Data-->
                     <div class=content v-if="primaryFileData.file_type === 'eml'">
-                        <div class="field">
+                        <div class="field" v-if="primaryFileData.body_urls.length > 0">
                             <label class="label">URLs from Email Body</label>
-                            <ul>
+                            <ul id="bodyUrls">
                                 <li v-for="url in primaryFileData.body_urls">
                                     ${ url }
                                 </li>
                             </ul>
                         </div>
-                        <div v-if="primaryFileData.headers">
+                        <div class="content" v-if="primaryFileData.headers">
                             <button class="button is-info is-outline" v-on:click="emlHeadToggle = true">Headers</button>
                             <div class="modal" :class="{ 'is-active': emlHeadToggle }">
                                 <div class="modal-background"></div>
@@ -100,7 +100,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="field" v-if="primaryFileData.attachments">
+
+                        <div class="content" v-if="primaryFileData.attachments">
                             <label class="label">Attachments</label>
                             <article class="message" v-for="attachment in primaryFileData.attachments">
                                 <div class="message-header">
@@ -109,7 +110,7 @@
                                 </div>
                                 <div class="message-body">
                                     <div class="field is-horizontal" v-for="(value, hash) in attachment.hash">
-                                        <label class="label">${ hash } : </label>
+                                        <label class="label">${ hash.toUpperCase() } : </label>
                                         <p>${ value }</p>
                                     </div>
                                     <div class="content" v-if="(attachment.file_name.endsWith('docx') || attachment.file_name.endsWith('doc')) && attachment.macros">
@@ -262,6 +263,16 @@
         list-style: none;
         margin-left: 0em;
         margin-top: 0em;
+    }
+
+    .content {
+        margin-top: 2em;
+    }
+
+    #bodyUrls {
+        overflow: auto;
+        width: 50%;
+        height: 200px;
     }
 </style>
 
