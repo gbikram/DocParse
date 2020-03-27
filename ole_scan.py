@@ -16,8 +16,6 @@ def getVbaIOCs(pathToFile):
     if (vbaparser.detect_vba_macros()) is False:
         return None
 
-    print("macros detected")
-
     results = vbaparser.analyze_macros()
     json_macros = []
     for kw_type, keyword, description in results:
