@@ -5,3 +5,4 @@ __pycache__
 uploadedfiles/
 app.py.save
 env/
+phishml/pretrained_models/document-frequency-dictionary.npy
