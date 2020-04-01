@@ -16,14 +16,15 @@ from joblib import dump, load
 from langdetect import detect
 from tokenizers import ByteLevelBPETokenizer
 
+MODEL_FOLDER = "./phishml"
 """
 How to run:
 python3 test_pretrained_model.py --tokenizer_folder pretrained_models --threshold 0.5 --model_dir pretrained_models --website_to_test https://www.google.com
 """
 
 def runPhishCheck(website):
-	tokenizerFolder = "pretrained_models"
-	savedModelDirectory = "pretrained_models"
+	tokenizerFolder = MODEL_FOLDER + "/pretrained_models"
+	savedModelDirectory = MODEL_FOLDER + "/pretrained_models"
 	threshold = 0.5
 
 	# Loading files

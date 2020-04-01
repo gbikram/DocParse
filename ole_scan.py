@@ -6,6 +6,7 @@ import datetime
 import json
 import eml_parser
 import mailparser
+from phishml import test_pretrained_model as phishml
 
 UPLOAD_FOLDER = "./uploadedfiles"
 
@@ -24,7 +25,6 @@ def getVbaIOCs(pathToFile):
         macro_data['keyword'] = keyword
         macro_data['description'] = description
         json_macros.append(macro_data)
-        # output = 'type=%s - keyword=%s - description=%s' % (kw_type, keyword, description)
     vbaparser.close()
     
     return json_macros
@@ -67,8 +67,7 @@ def getEmailIOCs(pathToFile):
             attachmentData['hash'] = {
                 'md5': attachment['hash']['md5'],
                 'sha256': attachment['hash']['sha256']
-            }
-            
+            }            
             
             # Docx  or DOC file
             if(attachment['filename'].endswith(".docx") or attachment['filename'].endswith(".doc") ):
@@ -90,8 +89,18 @@ def getEmailIOCs(pathToFile):
     
     # Get URLs from raw email
     bodyUrls = eml_parser.eml_parser.get_uri_ondata(mail.body)
-    json_out['body_urls'] = bodyUrls
     
+    # Convert body urls to dict
+    bodyUrlsDict = []
+    for bodyUrl in bodyUrls:
+        bodyUrlData = {}
+        bodyUrlData['url'] = bodyUrl
+        print(bodyUrl)
+        bodyUrlData['is_phishing'] = phishml.runPhishCheck(bodyUrl)
+        bodyUrlsDict.append(bodyUrlData)
+    
+    json_out['body_urls'] = bodyUrlsDict
+
     return json_out
 
 def startScan(pathToFile):
