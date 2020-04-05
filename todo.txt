@@ -5,6 +5,7 @@ To-Do:
 Fix env activation shell
 
 Server Side:
+Save email files in unique folder
 Add functionality for other documents - PDF, DOC, EML
     EML - DONE
     DOCX - DONE

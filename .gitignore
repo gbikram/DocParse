@@ -7,3 +7,7 @@ app.py.save
 env/
 phishml/pretrained_models/document-frequency-dictionary.npy
 templates/components/
+front-end/package-lock.json
+front-end/docparse-ui/package-lock.json
+front-end/node_modules/
+front-end/docparse-ui/.cache/
