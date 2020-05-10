@@ -41,7 +41,12 @@
               </td>
               <td>{{ primaryFileData.file_type.toUpperCase() }}</td>
             </tr>
-            <tr></tr>
+            <tr v-if="primaryFileData.file_type === 'eml'">
+              <td>
+                <label class="label">Scan Result</label>
+              </td>
+              <td>{{ primaryFileData.file_resolution }}</td>
+            </tr>
           </tbody>
         </table>
 
@@ -175,10 +180,12 @@ export default {
                 var primaryFileData = {}
                 primaryFileData = {
                     "file_name": this.selectorFileName,
-                    "file_type": fileData.file_type
+                    "file_type": fileData.file_type,
                 }
                 var fileType = primaryFileData.file_type
                 if (fileType === "eml") {                    
+                    primaryFileData["file_resolution"] = fileData.email_data.resolution
+                
                     if(fileData.email_data.attachments) {
                       primaryFileData["attachments"] = fileData.email_data.attachments
                       // Add dropdown state

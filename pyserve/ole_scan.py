@@ -82,7 +82,8 @@ def getEmailIOCs(pathToFile):
             attachments.append(attachmentData)
         
         json_out['attachments'] = attachments
-        json_out['headers'] = parsedEmail['header']['header']
+    json_out['headers'] = parsedEmail['header']['header']
+    json_out['resolution'] = "benign"
     
     # Parse Raw Email
     mail = mailparser.parse_from_file(pathToFile)
@@ -92,11 +93,21 @@ def getEmailIOCs(pathToFile):
     
     # Convert body urls to dict
     bodyUrlsDict = []
+    urlCounter = 0 
     for bodyUrl in bodyUrls:
         bodyUrlData = {}
         bodyUrlData['url'] = bodyUrl
+
+        urlCounter += 1
+
         print(bodyUrl)
-        bodyUrlData['is_phishing'] = phishml.runPhishCheck(bodyUrl)
+
+        if(json_out['resolution'] == "benign"):
+            if(phishml.runPhishCheck(bodyUrl)):
+                json_out['resolution'] = "phishing"
+    
+        if(urlCounter == 10 or "unsubscribe" in bodyUrl):
+            json_out['resolution'] = "spam"
         bodyUrlsDict.append(bodyUrlData)
     
     json_out['body_urls'] = bodyUrlsDict

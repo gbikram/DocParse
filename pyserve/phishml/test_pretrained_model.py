@@ -53,7 +53,7 @@ def runPhishCheck(website):
 	except Exception as e:
 		print("**** Error loading the website ****")
 		print(e)
-		exit()
+	
 
 	# Apply tfidf weighting
 	totalFilesUnderConsideration = 18500 # total number of documents/html files in our training data

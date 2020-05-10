@@ -1,11 +1,20 @@
 # Application for parsing emails and documents
 
+## Phishing Detection Sources:
+https://checkphish.ai/checkphish-api - To-Do
+KDNuggets Pre-trained ML model
+
+## Malware Detection Sources:
+oletools
+peepdf - To-Do
+
 ## Usage
 Activating venv
 source env/bin/activate
 python3 -m pip install -r requirements.txt 
 
 ## To-Do:
+Additional Sources - Checkphish.ai, VirusTotal, peepdf
 
 ### Server Side:
 * Save email files in unique folder
