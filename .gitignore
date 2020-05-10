@@ -3,7 +3,7 @@ docs/mal-samples/
 pyserve/__pycache__/
 pyserve/uploadedfiles/
 pyserve/app.py.save
-pyserve/env/
+pyserve/venv/
 pyserve/phishml/pretrained_models/document-frequency-dictionary.npy
 pyserve/templates/components/
 client/package-lock.json
