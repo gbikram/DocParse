@@ -29,3 +29,15 @@ python3 -m pip install -r requirements.txt
 
 ### Troubleshooting:
 https://medium.com/cleversonder/from-zero-to-hero-with-vue-advanced-components-parcel-dev-tools-fab980a62259
+https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+https://docs.python.org/3/library/venv.html
+
+
+#### Activate virtual env
+source env/bin/activate
+python -m pip install -r requirements.txt
+python app.py
+
+#### Run Client
+npm run dev
+
