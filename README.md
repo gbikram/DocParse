@@ -14,7 +14,7 @@ source env/bin/activate
 python3 -m pip install -r requirements.txt 
 
 ## To-Do:
-Additional Sources - Checkphish.ai, VirusTotal, peepdf
+Additional Sources - Checkphish.ai, VirusTotal, peepdf, spamassasin
 
 ### Server Side:
 * Save email files in unique folder
@@ -34,7 +34,7 @@ Additional Sources - Checkphish.ai, VirusTotal, peepdf
 
 
 ### Additional Features that can be considered:
-* Oletools malware deobfuscation - for emotet 
+* Oletools malware deobfuscation
 
 ### Troubleshooting:
 https://medium.com/cleversonder/from-zero-to-hero-with-vue-advanced-components-parcel-dev-tools-fab980a62259
