@@ -48,5 +48,8 @@ python -m pip install -r requirements.txt
 python app.py
 
 #### Run Client
-npm run dev
+sudo docker build -t docparse-vue .
+sudo docker run -it -p 127.0.0.1:80:8080 --rm --name docparse-vue docparse-vue
+
+
 
