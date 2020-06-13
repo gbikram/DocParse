@@ -51,5 +51,6 @@ Additional Sources - Checkphish.ai, VirusTotal, peepdf, spamassasin
 * sudo docker build -t docparse-vue .
 * sudo docker run -it -p 127.0.0.1:80:8080 --rm --name docparse-vue docparse-vue
 
-
-
+#### Run Server
+* sudo docker build --tag flask-docparse .
+* sudo docker run --name flask-docparse -p 5555:5555 flask-docparse
