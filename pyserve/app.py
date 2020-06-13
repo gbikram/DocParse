@@ -2,7 +2,7 @@
 from flask import Flask, request
 import ole_scan
 from flask import render_template
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import os
 
 UPLOAD_FOLDER = "./uploadedfiles"
@@ -11,13 +11,14 @@ app = Flask(__name__)
 CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# @app.route('/')
-# # Generate Front-end
-# def index():
-#     return render_template("index.html")
+@app.route('/cors', methods = ["GET"])
+# Test CORS
+def cors_test():
+    return "CORS Success"
 
 # Called on upload
 @app.route('/AnalyzeFile', methods = ["POST"])
+# @cross_origin(origin='localhost', headers=['Access-Control-Allow-Origin', '*'])
 def analyzeFile():
    if request.method == "POST":
         # Get file from client
