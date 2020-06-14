@@ -54,3 +54,6 @@ Additional Sources - Checkphish.ai, VirusTotal, peepdf, spamassasin
 #### Run Server
 * sudo docker build --tag flask-docparse .
 * sudo docker run --name flask-docparse -p 5000:5000 flask-docparse
+
+### Build Docker Compose:
+docker-compose up --build
