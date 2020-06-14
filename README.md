@@ -1,5 +1,11 @@
 # Application for parsing emails and documents
 
+## Run with Docker on localhost
+* mkdir pyserve/uploadedfiles
+* unzip pyserve/phishml/pretrained_models/document-frequency-dictionary.zip
+* create client/.env - Add VUE_APP_API=http://localhost:80/api
+* Build and run with docker - docker-compose up --build
+
 ## Phishing Detection Sources:
 https://checkphish.ai/checkphish-api - To-Do
 KDNuggets Pre-trained ML model
@@ -54,6 +60,3 @@ Additional Sources - Checkphish.ai, VirusTotal, peepdf, spamassasin
 #### Run Server
 * sudo docker build --tag flask-docparse .
 * sudo docker run --name flask-docparse -p 5000:5000 flask-docparse
-
-### Build Docker Compose:
-docker-compose up --build
