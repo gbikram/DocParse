@@ -1,11 +1,10 @@
 FROM python:3
 
-COPY . /app
+WORKDIR /backend
 
-WORKDIR /app
+ADD . /backend
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 5555
-
-CMD [ "python", "app.py" ]
+# CMD [ "python", "app.py" ]
+CMD [ "uwsgi", "app.ini" ]

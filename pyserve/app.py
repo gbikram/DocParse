@@ -11,13 +11,13 @@ app = Flask(__name__)
 CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/cors', methods = ["GET"])
+@app.route('/api/cors', methods = ["GET"])
 # Test CORS
 def cors_test():
     return "CORS Success"
 
 # Called on upload
-@app.route('/AnalyzeFile', methods = ["POST"])
+@app.route('/api/AnalyzeFile', methods = ["POST"])
 # @cross_origin(origin='localhost', headers=['Access-Control-Allow-Origin', '*'])
 def analyzeFile():
    if request.method == "POST":
@@ -32,4 +32,4 @@ def analyzeFile():
         return ole_scan.startScan(filepath)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5555, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

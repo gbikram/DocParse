@@ -18,5 +18,4 @@ COPY . .
 # build app for production with minification
 RUN npm run production
 
-EXPOSE 8080
 CMD [ "http-server", "dist" ]

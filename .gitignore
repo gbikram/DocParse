@@ -1,6 +1,7 @@
 .vscode
 docs/mal-samples/
 pyserve/__pycache__/
+pyserve/phishml/__pycache__/
 pyserve/uploadedfiles/
 pyserve/app.py.save
 pyserve/venv/
