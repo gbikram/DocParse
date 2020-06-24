@@ -1,4 +1,4 @@
-# Application for parsing emails and documents
+# Parse files for malicious indicators
 
 ## Run with Docker on localhost
 * mkdir pyserve/uploadedfiles
@@ -6,8 +6,10 @@
 * create client/.env - Add VUE_APP_API=http://localhost:80/api
 * Build and run with docker - docker-compose up --build
 
+![Design](https://github.com/ghurabikram/DocParse/blob/master/docs/architecture.png)
+
+
 ### Troubleshooting:
 * https://medium.com/cleversonder/from-zero-to-hero-with-vue-advanced-components-parcel-dev-tools-fab980a62259
 * https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 * https://docs.python.org/3/library/venv.html
-
