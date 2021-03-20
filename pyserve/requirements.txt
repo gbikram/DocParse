@@ -14,7 +14,7 @@ idna==2.9
 ipaddress==1.0.23
 isort==4.3.21
 itsdangerous==1.1.0
-Jinja2==2.11.1
+Jinja2==2.11.3
 joblib==0.14.1
 langdetect==1.0.8
 lazy-object-proxy==1.4.3
