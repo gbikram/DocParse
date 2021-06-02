@@ -43,7 +43,7 @@ simplejson==3.17.0
 six==1.14.0
 tokenizers==0.6.0
 typed-ast==1.4.1
-urllib3==1.25.8
+urllib3==1.26.5
 Werkzeug==1.0.0
 wrapt==1.11.2
 uwsgi==2.0.18
