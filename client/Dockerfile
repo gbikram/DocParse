@@ -1,5 +1,7 @@
 FROM node:lts-alpine
 
+RUN yarn add node-sass
+
 # install simple http server for serving static content
 RUN npm install -g http-server
 
@@ -11,6 +13,7 @@ COPY package*.json ./
 
 # install project dependencies
 RUN npm install
+RUN npm update
 
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .

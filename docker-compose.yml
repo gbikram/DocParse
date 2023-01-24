@@ -1,43 +1,41 @@
 # check your version: https://docs.docker.com/compose/compose-file/
 version: "3.7"
-
-
 services:
-# first container
-    backend:
-        # look for dockerfile and build the container
-        build: ./pyserve
-        container_name:  backend
-        restart: always
-        # set enviornemt variables
-        environment: 
+  # first container:
+  backend:
+    # look for dockerfile and build the container
+    build: ./pyserve
+    container_name:  backend
+    restart: always
+      # set enviornemt variables
+    environment: 
             - APP_NAME=DocParse
-        #  mount the volumes so we can change code and hot reload
-        volumes:
-            - './pyserve:/backend'
+              #  mount the volumes so we can change code and hot reload
+    volumes:
+      - './pyserve:/backend'
         #  expose port on the container, only to other containers
-        expose:
-            - 5000
+    expose:
+      - 5000
+  
+  nginx:
+    build: ./nginx
+    container_name:  nginx
+    restart: always
+    # port allows the host machine to link to container
+    # pass 80 from host machine to 80 of the image filesystem
+    ports:
+      - "80:80"
 
-    nginx:
-        build: ./nginx
-        container_name:  nginx
-        restart: always
-        # port allows the host machine to link to container
-        # pass 80 from host machine to 80 of the image filesystem
-        ports:
-            - "80:80"
-    
-    frontend:
-      build: ./client
-      container_name:  frontend
-      restart: always
-      #  mount the volumes so we can change code and hot reload
-      volumes:
-          - './client:/frontend'
+  frontend:
+    build: ./client
+    container_name:  frontend
+    restart: always
+    #  mount the volumes so we can change code and hot reload
+    volumes:
+      - './client:/frontend'
 
       #  port allows the host machine to link to container
       #  8000 for vue ui, 5000 for our vue app
-      ports:
-          - "8181:8181"
-          - "8080:8080"
+    ports:
+      - "8181:8181"
+      - "8080:8080"

@@ -52,7 +52,8 @@ def getEmailIOCs(pathToFile):
 
     with open(pathToFile, 'rb') as emailFile:
         rawEmail = emailFile.read()
-    parsedEmail = eml_parser.eml_parser.decode_email_b(rawEmail, include_attachment_data=True)
+    ep = eml_parser.EmlParser()
+    parsedEmail = ep.decode_email_bytes(rawEmail)
     del parsedEmail['body']
     # print(json.dumps(parsedEmail, default=jsonSerial))
 
@@ -89,7 +90,7 @@ def getEmailIOCs(pathToFile):
     mail = mailparser.parse_from_file(pathToFile)
     
     # Get URLs from raw email
-    bodyUrls = eml_parser.eml_parser.get_uri_ondata(mail.body)
+    bodyUrls = ep.get_uri_ondata(mail.body)
     
     # Convert body urls to dict
     bodyUrlsDict = []
